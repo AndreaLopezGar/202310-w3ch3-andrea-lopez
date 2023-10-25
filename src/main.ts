@@ -1,13 +1,13 @@
 /* eslint-disable no-new */
-// document.querySelector<HTMLDivElement>('.app')!.innerHTML = `
-// <h1>Holi</h1>
-// `;
-
 import { List } from './components/list';
-import './scss/style.scss';
+import { Footer } from './components/footer';
+import { Header } from './components/header';
+import './css/styles.css';
 
 function main() {
+  new Header('.app');
   new List('.app');
+  new Footer('.app');
 }
 
 main();
