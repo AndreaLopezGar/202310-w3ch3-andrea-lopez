@@ -1,22 +1,23 @@
-import { screen } from '@testing-library/dom';
 import '@testing-library/jest-dom';
 
 import { Footer } from './footer';
 
 describe('Given Footer component', () => {
-  describe('When we instantiate', () => {
-    document.body.innerHTML = '<div></div>';
-    const footer = new Footer('div');
-    test('Then it should be instance of Footer', () => {
-      expect(footer).toBeInstanceOf(Footer);
-      expect(footer).toHaveProperty('selector', 'div');
-      expect(footer).toHaveProperty('template');
-      expect(footer.element).toBeInstanceOf(HTMLElement);
+  describe('When we update the content', () => {
+    const initialContent = 'Initial Content';
+    const footer = new Footer('div', initialContent);
+
+    test('It should display the initial content', () => {
+      const footerElement = document.querySelector('div');
+      expect(footerElement.textContent).toBe(initialContent);
     });
 
-    test('It should be in the document', () => {
-      const element = screen.getByRole('contentinfo');
-      expect(element).toBeInTheDocument();
+    const updatedContent = 'Updated Content';
+    footer.updateContent(updatedContent);
+
+    test('It should display the updated content', () => {
+      const footerElement = document.querySelector('div');
+      expect(footerElement.textContent).toBe(updatedContent);
     });
   });
 });
